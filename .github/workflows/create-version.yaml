@@ -50,6 +50,7 @@ jobs:
           uv version --bump ${{ inputs.bump_type }}
           NEW_VERSION=$(grep '^version = ' pyproject.toml | cut -d '"' -f 2)
           echo "tag=v$NEW_VERSION" >> $GITHUB_OUTPUT
+          uv lock
 
       # STEP 1: Generate all changelog files using the --bump flag
       - name: Update Main Changelog File
@@ -70,7 +71,7 @@ jobs:
       # STEP 2: Commit all file changes together
       - name: Commit All Changes
         run: |
-          git add pyproject.toml CHANGELOG.md
+          git add pyproject.toml CHANGELOG.md uv.lock
           git commit -m "chore(release): bump version to ${{ steps.bump.outputs.tag }}"
 
       # STEP 3: Create the tag for the final commit

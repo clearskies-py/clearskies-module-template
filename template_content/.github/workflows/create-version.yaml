@@ -58,6 +58,7 @@ jobs:
           uv version --bump ${{ inputs.bump_type }}
           NEW_VERSION=$(grep '^version = ' pyproject.toml | cut -d '"' -f 2)
           echo "tag=v$NEW_VERSION" >> $GITHUB_OUTPUT
+          uv lock
 
       # STEP 1: Generate all changelog files using the --bump flag
       - name: Update Main Changelog File
