@@ -7,7 +7,7 @@ module_name:
 module_display_name:
   type: str
   help: Display name of the module (e.g., GitLab, Snyk, Wiz)
-  default: My Module
+  default: {{ module_name | replace('-', ' ') | title }}
 
 # Author information
 author_name:

@@ -20,7 +20,7 @@ pip install copier
 To create a new Clearskies module, run:
 
 ```bash
-copier copy gh:clearskies-module-template my-module --trust
+copier copy https://github.com/clearskies-py/clearskies-module-template my-module --trust
 ```
 
 **Note:** The `--trust` flag is required because the template includes automated setup tasks (git init, dependency installation, and pre-commit hook setup).
