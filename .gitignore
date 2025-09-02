@@ -1,0 +1,30 @@
+# Python cache and test artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# pytest cache
+debug.log
+.pytest_cache/
+.ruff_cache
+
+__pycache__
+
+# Copier output
+/copier-output/
+
+# VSCode
+.vscode/
+
+# Hatch build
+/dist/
+
+# OS files
+.DS_Store
+
+# Other common ignores
+*.log
+*.swp
+*.bak
+*.tmp
