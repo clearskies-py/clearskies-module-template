@@ -32,6 +32,28 @@ package_name:
   default: clearskies_{{ module_name|replace('-', '_') }}
   when: false
 
+site_base_url:
+  type: str
+  help: The base url used for the documentation.
+  default: https://clearskies.info
+
+pypi_package_name:
+  type: str
+  help: The name of the PyPI package to be created (e.g., myservice)
+  default: clear-skies-{{ module_name|replace('_', '-') | replace(' ', '-') }}
+  when: false
+
+docs_modules_location:
+  type: str
+  help: The location of the documentation modules.
+  default: modules
+
+docs_modules_location_trimmed:
+  type: str
+  help: The trimmed location of the documentation modules.
+  default: "{{ docs_modules_location | regex_replace('^\\/|\\/$', '') }}"
+  when: false
+
 create_backends:
   type: bool
   help: Does this module need backends?
@@ -77,6 +99,7 @@ _skip_if_exists:
     - "uv.lock"
     - 'src/{{ package_name }}/__init__.py'
     - 'src/{{ package_name }}/**/__init__.py'
+    - "docs/python/config.json"
 
 # Post-generation tasks
 _tasks:
