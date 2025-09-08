@@ -36,7 +36,7 @@ jobs:
                   sudo bundle install
                   sudo bundle exec jekyll build
                   cd _site
-                  aws s3 cp . s3://clearskies.info/modules/producers/{{ pypi_package_name }}/ --recursive
+                  aws s3 sync --delete . s3://clearskies.info/{{ docs_modules_location_trimmed }}/{{ pypi_package_name }}/
                   cd ../../python
                   aws s3 cp s3://clearskies.info/{{ docs_modules_location_trimmed }}/manifest.json . || touch manifest.json
                   uv run update_manifest.py --pyproject_file=../../pyproject.toml --modules_location={{ docs_modules_location_trimmed }}
