@@ -1,5 +1,5 @@
 [project]
-name = "clear-skies-{{ module_name }}"
+name = "{{ pypi_package_name }}"
 description = "{{ module_display_name }} module for Clearskies"
 version = "v2.0.0"
 license = "MIT"
@@ -15,6 +15,7 @@ classifiers = [
 ]
 
 [project.urls]
+Docs = "https://{{ site_base_url }}/{{ docs_modules_location_trimmed }}/{{ pypi_package_name }}
 Repository = "https://github.com/clearskies-py/{{ module_name }}"
 Issues = "https://github.com/clearskies-py/{{ module_name }}/issues"
 Changelog = "https://github.com/clearskies-py/{{ module_name }}/blob/main/CHANGELOG.md"
