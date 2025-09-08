@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.31] - 2025-09-08
 
+### Changed
+- Bump version to v0.0.31 by @github-actions[bot]
+
 ### Fixed
 - S3 path
 
