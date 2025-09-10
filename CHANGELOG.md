@@ -5,9 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.34] - 2025-09-10
+
+### Fixed
+- Raw template for variables
+
 ## [0.0.33] - 2025-09-10
 
 ### Changed
+- Bump version to v0.0.33 by @github-actions[bot]
 - Pull latest changes from repo
 - Reuse docs.yaml
 - Update copy paste fault
@@ -85,6 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## New Contributors
 * @github-actions[bot] made their first contribution
 * @ made their first contribution
+[0.0.34]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.33..v0.0.34
 [0.0.33]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.32..v0.0.33
 [0.0.32]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.31..v0.0.32
 [0.0.31]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.30..v0.0.31
