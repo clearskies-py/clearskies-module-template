@@ -11,3 +11,16 @@ dependencies = [
     "pytest-cov>=6.2.1",
     "ruff>=0.12.10",
 ]
+
+[tool.black]
+line-length = 120
+skip-magic-trailing-comma = false
+preview = false
+
+[dependency-groups]
+dev = [
+    "clear-skies>=2.0.6",
+    "clear-skies-doc-builder>=2.0.4",
+]
+
+

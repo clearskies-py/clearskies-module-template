@@ -8,6 +8,7 @@ import json
 import os
 import re
 import sys
+
 import clearskies
 
 ManifestEntry = dict[str, str]
@@ -17,6 +18,7 @@ ManifestData = list[ManifestEntry]
 def update_manifest(input_output: clearskies.input_outputs.Cli) -> None:
     """
     Sanitizes, checks, updates, and sorts a manifest.json file.
+
     The clearskies.contexts.Cli context will pass the command-line arguments
     directly to these parameters after validation and applying defaults from the schema.
     """
@@ -35,9 +37,7 @@ def update_manifest(input_output: clearskies.input_outputs.Cli) -> None:
         sys.exit(1)
 
     print(f"Found module name: {module_name}")
-    module_url: str = (
-        f"/{modules_location.strip('/')}/{module_name.lower().replace(' ', '-')}/"
-    )
+    module_url: str = f"/{modules_location.strip('/')}/{module_name.lower().replace(' ', '-')}/"
 
     # Step 3: Find existing module to update its URL, or add it if it's new.
     print("Checking for existing module...")
@@ -68,7 +68,9 @@ def update_manifest(input_output: clearskies.input_outputs.Cli) -> None:
 
 def _read_and_sanitize_manifest(manifest_file: str) -> ManifestData:
     """
-    Reads the manifest file, sanitizes it, and returns a clean list of module objects.
+    Read the manifest file and sanitizes it.
+
+    Return a clean list of module objects.
     """
     if not os.path.exists(manifest_file) or os.path.getsize(manifest_file) == 0:
         print("Manifest file is missing or empty. Starting with an empty list.")
@@ -86,9 +88,7 @@ def _read_and_sanitize_manifest(manifest_file: str) -> ManifestData:
             return []
 
         # Ensure every item in the list is a dictionary with a 'name' key
-        clean_data: ManifestData = [
-            item for item in data if isinstance(item, dict) and "name" in item
-        ]
+        clean_data: ManifestData = [item for item in data if isinstance(item, dict) and "name" in item]
         print("Sanitization successful.")
         return clean_data
     except json.JSONDecodeError:
@@ -101,9 +101,7 @@ def _read_and_sanitize_manifest(manifest_file: str) -> ManifestData:
 
 
 def _get_module_name_from_pyproject(pyproject_file: str) -> str | None:
-    """
-    Finds the project name from a pyproject.toml file.
-    """
+    """Find the project name from a pyproject.toml file."""
     if not os.path.exists(pyproject_file):
         return None
     with open(pyproject_file, "r") as f:
@@ -115,9 +113,7 @@ def _get_module_name_from_pyproject(pyproject_file: str) -> str | None:
 
 
 def _write_manifest(manifest_file: str, data: ManifestData):
-    """
-    Writes the provided data to the manifest file.
-    """
+    """Write the provided data to the manifest file."""
     try:
         with open(manifest_file, "w") as f:
             json.dump(data, f, indent=2)

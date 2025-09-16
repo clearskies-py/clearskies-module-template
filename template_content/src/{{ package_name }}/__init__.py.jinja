@@ -1,14 +1,12 @@
-
 import clearskies
-
 {%- set module_list = [] -%}
 {%- if create_backends %}{% set module_list = module_list + ['backends'] %}{% endif %}
 {%- if create_columns %}{% set module_list = module_list + ['columns'] %}{% endif %}
 {%- if create_configs %}{% set module_list = module_list + ['configs'] %}{% endif %}
 {%- if create_endpoints %}{% set module_list = module_list + ['endpoints'] %}{% endif %}
 {%- if create_models %}{% set module_list = module_list + ['models'] %}{% endif %}
-
 {%- if module_list|length > 0 %}
+
 from {{ package_name }} import {{ module_list | join(', ') }}
 
 __all__ = [{{ module_list | map('tojson') | join(', ') }}]

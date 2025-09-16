@@ -13,7 +13,8 @@ def test_template_dir():
 
 def test_template_generation_scratch(tmp_path: Path):
     """
-    Tests the template by calling the 'copier' command directly
+    Test the template by calling the 'copier' command directly.
+
     and inspecting the generated output.
     """
     # 1. Define the destination directory for the new project
@@ -66,13 +67,7 @@ def test_template_generation_scratch(tmp_path: Path):
     licence_path = project_destination / "LICENSE"
     assert licence_path.is_file()
 
-    backend_init = (
-        project_destination
-        / "src"
-        / "clearskies_test_service"
-        / "backends"
-        / "__init__.py"
-    )
+    backend_init = project_destination / "src" / "clearskies_test_service" / "backends" / "__init__.py"
     assert backend_init.is_file()
 
     license_content = licence_path.read_text()
