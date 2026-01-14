@@ -5,9 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.36] - 2026-01-14
+
+### Added
+- Add uv.lock
+
+### Changed
+- Update dependencies
+
 ## [0.0.35] - 2025-09-16
 
 ### Changed
+- Bump version to v0.0.35 by @github-actions[bot]
 - Revert by @cmancone
 - Copier requires a default value by @cmancone
 
@@ -105,6 +114,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## New Contributors
 * @github-actions[bot] made their first contribution
 * @ made their first contribution
+[0.0.36]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.35..v0.0.36
 [0.0.35]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.34..v0.0.35
 [0.0.34]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.33..v0.0.34
 [0.0.33]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.32..v0.0.33
