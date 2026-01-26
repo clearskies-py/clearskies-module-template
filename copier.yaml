@@ -100,6 +100,7 @@ _skip_if_exists:
     - 'src/{{ package_name }}/__init__.py'
     - 'src/{{ package_name }}/**/__init__.py'
     - "docs/python/config.json"
+    - "CHANGELOG.md"
 
 # Post-generation tasks
 _tasks:
