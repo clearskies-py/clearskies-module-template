@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.41] - 2026-01-26
+
+### Fixed
+- Issue with git on macos
+
+## [0.0.40] - 2026-01-26
+
+### Changed
+- Bump version to v0.0.40 by @github-actions[bot]
+
 ## [0.0.39] - 2026-01-26
 
 ### Added
@@ -140,6 +150,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## New Contributors
 * @github-actions[bot] made their first contribution
 * @ made their first contribution
+[0.0.41]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.40..v0.0.41
+[0.0.40]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.39..v0.0.40
 [0.0.39]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.38..v0.0.39
 [0.0.38]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.37..v0.0.38
 [0.0.37]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.36..v0.0.37
