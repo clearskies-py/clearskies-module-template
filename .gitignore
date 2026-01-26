@@ -14,9 +14,6 @@ __pycache__
 # Copier output
 /copier-output/
 
-# VSCode
-.vscode/
-
 # Hatch build
 /dist/
 
