@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add vscode
 
+### Changed
+- Bump version to v0.0.39 by @github-actions[bot]
+
 ### Fixed
 - Do not overwrite changelog
 
