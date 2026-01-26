@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.0.37] - 2026-01-26
 
 ### Changed
+- Bump version to v0.0.37 by @github-actions[bot]
 - Update dependencies
 
 ### Fixed
