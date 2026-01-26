@@ -41,19 +41,6 @@ exclude = [
     "tests/**"
 ]
 
-[tool.black]
-line-length = 120
-skip-magic-trailing-comma = false
-preview = false
-
-[tool.mypy]
-python_version = "3.11"
-
-exclude = [
-    ".*_test\\.py$",
-    "docs/.*"
-]
-
 [tool.pytest.ini_options]
 minversion = "6.0"
 addopts = "-ra -q"
