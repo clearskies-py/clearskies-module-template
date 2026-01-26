@@ -103,12 +103,16 @@ _skip_if_exists:
     - "CHANGELOG.md"
 
 # Post-generation tasks
+# Note: During 'copier update', tasks run in temp directories (old_copy/new_copy) for diff calculation.
+# Heavy tasks like uv sync create large .venv directories that cause "Argument list too long" errors.
+# We skip these in temp directories by checking _copier_conf.dst_path for temp directory patterns.
 _tasks:
   - command: git init
     description: Initialize git repository
-    wwhen: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation == 'copy' }}"
   - command: uv sync
     description: Install dependencies and create virtual environment
+    when: "{{ 'copier.' not in _copier_conf.dst_path | string }}"
   - command: uv run pre-commit install
     description: Install pre-commit hooks
     when: "{{ _copier_operation == 'copy' }}"
@@ -117,8 +121,10 @@ _tasks:
     when: "{{ _copier_operation == 'copy' }}"
   - command: uv run pre-commit run --all-files || true
     description: Run pre-commit on all files
+    when: "{{ 'copier.' not in _copier_conf.dst_path | string }}"
   - command: uv lock --upgrade
     description: Update dependencies and update lock file
+    when: "{{ 'copier.' not in _copier_conf.dst_path | string }}"
   - command: git add .
     description: Stage all files
     when: "{{ _copier_operation == 'copy' }}"
