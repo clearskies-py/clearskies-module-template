@@ -102,31 +102,20 @@ _skip_if_exists:
     - "docs/python/config.json"
     - "CHANGELOG.md"
 
-# Post-generation tasks
-# The .venv is removed at the end to avoid "Argument list too long" errors during copier update.
+# No _tasks to avoid "Argument list too long" errors during copier update.
+# Tasks run in temp directories during update, creating large diffs that exceed OS limits.
 # See: https://github.com/copier-org/copier/pull/2377
-_tasks:
-  - command: git init
-    description: Initialize git repository
-  - command: uv sync
-    description: Install dependencies and create virtual environment
-  - command: uv run pre-commit install
-    description: Install pre-commit hooks
-  - command: git add .
-    description: Stage all files for pre-commit
-  - command: uv run pre-commit run --all-files || true
-    description: Run pre-commit on all files
-  - command: uv lock --upgrade
-    description: Update dependencies and update lock file
-  - command: rm -rf .venv
-    description: Remove .venv to avoid large diff during copier update
 
 _message_after_copy: |
   Your project "{{ module_display_name }}" has been created!
 
   Next steps:
     cd {{ _copier_conf.dst_path }}
+    git init
     uv sync
+    uv run pre-commit install
+    git add .
+    uv run pre-commit run --all-files
     git add .
     git commit -m "feat: Initial project setup"
 
@@ -135,6 +124,7 @@ _message_after_update: |
 
   Next steps:
     uv sync
+    uv run pre-commit run --all-files
 
 _extensions:
   - jinja2_time.TimeExtension
