@@ -103,37 +103,38 @@ _skip_if_exists:
     - "CHANGELOG.md"
 
 # Post-generation tasks
-# Note: During 'copier update', tasks run in temp directories (old_copy/new_copy) for diff calculation.
-# Heavy tasks like uv sync create large .venv directories that cause "Argument list too long" errors.
-# We skip these in temp directories by checking _copier_conf.dst_path for temp directory patterns.
+# The .venv is removed at the end to avoid "Argument list too long" errors during copier update.
+# See: https://github.com/copier-org/copier/pull/2377
 _tasks:
   - command: git init
     description: Initialize git repository
-    when: "{{ _copier_operation == 'copy' }}"
   - command: uv sync
     description: Install dependencies and create virtual environment
-    when: "{{ 'copier.' not in _copier_conf.dst_path | string }}"
   - command: uv run pre-commit install
     description: Install pre-commit hooks
-    when: "{{ _copier_operation == 'copy' }}"
   - command: git add .
-    description: Stage all files
-    when: "{{ _copier_operation == 'copy' }}"
+    description: Stage all files for pre-commit
   - command: uv run pre-commit run --all-files || true
     description: Run pre-commit on all files
-    when: "{{ 'copier.' not in _copier_conf.dst_path | string }}"
   - command: uv lock --upgrade
     description: Update dependencies and update lock file
-    when: "{{ 'copier.' not in _copier_conf.dst_path | string }}"
-  - command: git add .
-    description: Stage all files
-    when: "{{ _copier_operation == 'copy' }}"
-  - command: "git commit -m 'feat: Initial project setup'"
-    description: Create initial commit
-    when: "{{ _copier_operation == 'copy' }}"
-  - command: "echo 'Project setup complete! Next steps: activate your venv, start coding, and check the README for more info.'"
-    description: Print next steps
-    when: "{{ _copier_operation == 'copy' }}"
+  - command: rm -rf .venv
+    description: Remove .venv to avoid large diff during copier update
+
+_message_after_copy: |
+  Your project "{{ module_display_name }}" has been created!
+
+  Next steps:
+    cd {{ _copier_conf.dst_path }}
+    uv sync
+    git add .
+    git commit -m "feat: Initial project setup"
+
+_message_after_update: |
+  Your project "{{ module_display_name }}" has been updated!
+
+  Next steps:
+    uv sync
 
 _extensions:
   - jinja2_time.TimeExtension
