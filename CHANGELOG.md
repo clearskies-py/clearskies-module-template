@@ -5,7 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.47] - 2026-05-11
+
+### Added
+- Add ty type checker
+
 ## [0.0.46] - 2026-01-28
+
+### Changed
+- Bump version to v0.0.46 by @github-actions[bot]
 
 ### Fixed
 - Docs directly as dependency
@@ -192,6 +200,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## New Contributors
 * @github-actions[bot] made their first contribution
 * @ made their first contribution
+[0.0.47]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.46..v0.0.47
 [0.0.46]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.45..v0.0.46
 [0.0.45]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.44..v0.0.45
 [0.0.44]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.43..v0.0.44
