@@ -79,6 +79,25 @@ create_models:
   help: Does this module need models?
   default: false
 
+python_versions:
+  help: >-
+    What versions of python are you targeting? We will add automated
+    testing for these versions.
+  default: ["3.12", "3.13", "3.14"]
+  type: str
+  multiselect: true
+  choices:
+    "3.11": "3.11"
+    "3.12": "3.12"
+    "3.13": "3.13"
+    "3.14": "3.14"
+
+minimum_python_version:
+  type: str
+  help: The minimum python version supported by this module.
+  default: "{{ python_versions | map('float') | sort | first | string }}"
+  when: false
+
 _subdirectory: template_content
 _templates_suffix: .jinja
 

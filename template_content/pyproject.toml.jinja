@@ -5,7 +5,7 @@ version = "v2.0.0"
 license = "MIT"
 readme = "./README.md"
 authors = [{name = "{{ author_name }}", email = "{{ author_email }}"}]
-requires-python = ">=3.11,<4.0"
+requires-python = ">={{ minimum_python_version }},<4.0"
 dependencies = ["clear-skies>=2.0.0,<3.0.0"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -55,9 +55,9 @@ pythonpath = [
 # This is the dedicated section for uv"s configuration
 [dependency-groups]
 dev = [
-    "black>=25.1.0",
     "pre-commit>=4.3.0",
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
     "ruff>=0.12.10",
+    "ty>=0.0.35"
 ]
