@@ -43,6 +43,11 @@ pypi_package_name:
   default: clear-skies-{{ module_name|replace('_', '-') | replace(' ', '-') }}
   when: false
 
+github_org_name:
+  type: str
+  help: The name of the github organization that the package lives in
+  default: clearskies-py
+
 docs_modules_location:
   type: str
   help: The location of the documentation modules.
