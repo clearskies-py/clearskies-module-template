@@ -120,7 +120,7 @@ _preserve_symlinks: true
 
 _migrations:
   - command: >-
-      python "{{ _copier_conf.src_path }}/migrations/update_pyproject_linter_tooling.py"
+      uv run python "{{ _copier_conf.src_path }}/migrations/update_pyproject_linter_tooling.py"
       --pyproject-file pyproject.toml
     when: "{{ _stage == 'after' }}"
 
