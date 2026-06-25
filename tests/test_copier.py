@@ -94,3 +94,29 @@ def test_template_generation_scratch(tmp_path: Path):
     ]
     for file in expected_files:
         assert (project_destination / file).is_file()
+
+    pre_commit_path = project_destination / ".pre-commit-config.yaml"
+    assert pre_commit_path.is_file()
+    pre_commit_content = pre_commit_path.read_text()
+    assert "- id: ruff-check" in pre_commit_content
+    assert "uv run ty check src" in pre_commit_content
+    assert "args: [-d, relaxed]" in pre_commit_content
+    assert "args: [--assume-in-merge]" in pre_commit_content
+
+    ruff_config_path = project_destination / "ruff.toml"
+    assert ruff_config_path.is_file()
+    ruff_config_content = ruff_config_path.read_text()
+    assert 'select = ["I", "D", "F401"]' in ruff_config_content
+    assert '"**/__init__.py" = ["I001"]' in ruff_config_content
+
+    run_tests_workflow_path = project_destination / ".github" / "workflows" / "run-tests.yml"
+    assert run_tests_workflow_path.is_file()
+    run_tests_workflow_content = run_tests_workflow_path.read_text()
+    assert "run-ty:" in run_tests_workflow_content
+    assert "run-mypy" not in run_tests_workflow_content
+
+    tests_matrix_workflow_path = project_destination / ".github" / "workflows" / "tests-matrix.yaml"
+    assert tests_matrix_workflow_path.is_file()
+    tests_matrix_workflow_content = tests_matrix_workflow_path.read_text()
+    assert "jobs:\n  ty:" in tests_matrix_workflow_content
+    assert "uv run ty check src" in tests_matrix_workflow_content

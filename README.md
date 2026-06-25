@@ -93,9 +93,8 @@ uv run pre-commit run --all-files
 
 The generated project includes a `.pre-commit-config.yaml` file with the following tools:
 
-- **black**: Code formatting
-- **ruff**: Fast Python linter and formatter
-- **mypy**: Static type checking
+- **ruff**: Fast Python linting and formatting (`ruff-check` + `ruff-format`)
+- **ty**: Static type checking
 - **yamllint**: YAML file linting
 - **Standard hooks**: trailing whitespace, end-of-file-fixer, etc.
 
@@ -118,6 +117,12 @@ copier update --trust
 **Important:** Updates only work when the original template was accessed via git (GitHub/GitLab URL). If you created your project from a local template path, updates won't work due to missing git reference tracking.
 
 **Note:** Updates will merge template changes with your custom implementation. Review the changes carefully before committing.
+
+### Safe pyproject migration for linter/tooling dependencies
+
+This template intentionally keeps `pyproject.toml` in `_skip_if_exists` to avoid overwriting module-specific dependencies and metadata during `copier update`.
+
+To still align linter/tooling dependencies, the template defines a Copier migration (`_migrations`) that runs automatically during `copier update` and updates only `[dependency-groups].dev` in `pyproject.toml`.
 
 
 ## Testing Your Implementation

@@ -13,12 +13,12 @@ module_display_name:
 author_name:
   type: str
   help: Your name
-  default:
+  default: "{{ git_user_name }}"
 
 author_email:
   type: str
   help: Your email
-  default:
+  default: "{{ git_user_email }}"
 
 year:
   type: int
@@ -88,7 +88,7 @@ python_versions:
   help: >-
     What versions of python are you targeting? We will add automated
     testing for these versions.
-  default: ["3.12", "3.13", "3.14"]
+  default: ["3.11", "3.12", "3.13", "3.14"]
   type: str
   multiselect: true
   choices:
@@ -117,6 +117,12 @@ _envops:
 
 # Make sure git metadata is preserved for updates
 _preserve_symlinks: true
+
+_migrations:
+  - command: >-
+      python "{{ _copier_conf.src_path }}/migrations/update_pyproject_linter_tooling.py"
+      --pyproject-file pyproject.toml
+    when: "{{ _stage == 'after' }}"
 
 _skip_if_exists:
     - "pyproject.toml"

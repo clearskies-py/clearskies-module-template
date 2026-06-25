@@ -29,7 +29,7 @@ pip install uv
 # Create a virtual environment and install all dependencies (including dev)
 uv sync
 
-# Install dev dependencies (including ruff, black, mypy) in the project environment
+# Install dev dependencies (including ruff and ty) in the project environment
 uv pip install .[dev]
 
 # Install pre-commit hooks
@@ -38,6 +38,12 @@ uv run pre-commit install
 # Optionally, run pre-commit on all files
 uv run pre-commit run --all-files
 ```
+
+## Migration behavior
+
+This template keeps `pyproject.toml` out of automatic Copier updates to protect module-specific dependencies and metadata.
+
+Linter/tooling dependency alignment is handled automatically by the template's Copier `_migrations` during `copier update`, updating only `[dependency-groups].dev`.
 
 ## Usage Example
 
