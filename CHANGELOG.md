@@ -5,12 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.50] - 2026-06-25
+
+### Fixed
+- Use right linters
+
 ## [0.0.49] - 2026-06-04
 
 ### Added
 - Add the github org name by @cmancone
 
 ### Changed
+- Bump version to v0.0.49 by @github-actions[bot]
 - Merge pull request #1 from clearskies-py/fix/github-org-name by @tnijboer in [#1](https://github.com/clearskies-py/clearskies-module-template/pull/1)
 
 ## New Contributors
@@ -221,6 +227,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## New Contributors
 * @github-actions[bot] made their first contribution
 * @ made their first contribution
+[0.0.50]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.49..v0.0.50
 [0.0.49]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.48..v0.0.49
 [0.0.48]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.47..v0.0.48
 [0.0.47]: https://github.com/clearskies-py/clearskies-module-template/compare/v0.0.46..v0.0.47
