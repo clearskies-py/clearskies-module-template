@@ -1,5 +1,5 @@
 [project]
-version = "0.0.51"
+version = "0.0.52"
 name = "clearskies-module-template"
 description = "A copier template for Clearskies modules"
 readme = "README.md"
