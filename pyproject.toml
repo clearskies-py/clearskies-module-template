@@ -5,6 +5,7 @@ description = "A copier template for Clearskies modules"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "certifi>=2026.10.19",
     "ty>=0.0.35",
     "pre-commit>=4.3.0",
     "pytest>=8.4.1",
